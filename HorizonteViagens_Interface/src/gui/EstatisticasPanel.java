@@ -2,6 +2,7 @@ package gui;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
 import java.net.URL;
 
 public class EstatisticasPanel extends JPanel {
@@ -90,10 +91,38 @@ public class EstatisticasPanel extends JPanel {
         dispersaoComboBox.addActionListener(e -> exibirGraficoDispersao());
         pizzaComboBox.addActionListener(e -> exibirGraficoPizza());
         barraComboBox.addActionListener(e -> exibirGraficoBarra());
-        radarButton.addActionListener(e -> exibirGrafico("/Graficos/desconhecido_prefAtributos_Pacote.jpg"));
+        radarButton.addActionListener(e -> {
+            ActionListener dListener = dispersaoComboBox.getActionListeners()[0];
+            ActionListener pListener = pizzaComboBox.getActionListeners()[0];
+            ActionListener bListener = barraComboBox.getActionListeners()[0];
+            dispersaoComboBox.removeActionListener(dListener);
+            pizzaComboBox.removeActionListener(pListener);
+            barraComboBox.removeActionListener(bListener);
+
+            dispersaoComboBox.setSelectedIndex(0);
+            pizzaComboBox.setSelectedIndex(0);
+            barraComboBox.setSelectedIndex(0);
+
+            dispersaoComboBox.addActionListener(dListener);
+            pizzaComboBox.addActionListener(pListener);
+            barraComboBox.addActionListener(bListener);
+
+            exibirGrafico("/Graficos/radar_prefAtributos_Pacote.jpg");
+        });
     }
 
     private void exibirGraficoDispersao() {
+        ActionListener pListener = pizzaComboBox.getActionListeners()[0];
+        ActionListener bListener = barraComboBox.getActionListeners()[0];
+        pizzaComboBox.removeActionListener(pListener);
+        barraComboBox.removeActionListener(bListener);
+
+        pizzaComboBox.setSelectedIndex(0);
+        barraComboBox.setSelectedIndex(0);
+
+        pizzaComboBox.addActionListener(pListener);
+        barraComboBox.addActionListener(bListener);
+
         int selectedIndex = dispersaoComboBox.getSelectedIndex();
         String filename = "";
         switch (selectedIndex) {
@@ -108,6 +137,17 @@ public class EstatisticasPanel extends JPanel {
     }
 
     private void exibirGraficoPizza() {
+        ActionListener dListener = dispersaoComboBox.getActionListeners()[0];
+        ActionListener bListener = barraComboBox.getActionListeners()[0];
+        dispersaoComboBox.removeActionListener(dListener);
+        barraComboBox.removeActionListener(bListener);
+
+        dispersaoComboBox.setSelectedIndex(0);
+        barraComboBox.setSelectedIndex(0);
+
+        dispersaoComboBox.addActionListener(dListener);
+        barraComboBox.addActionListener(bListener);
+
         int selectedIndex = pizzaComboBox.getSelectedIndex();
         String filename = "";
         switch (selectedIndex) {
@@ -120,6 +160,17 @@ public class EstatisticasPanel extends JPanel {
     }
 
     private void exibirGraficoBarra() {
+        ActionListener dListener = dispersaoComboBox.getActionListeners()[0];
+        ActionListener pListener = pizzaComboBox.getActionListeners()[0];
+        dispersaoComboBox.removeActionListener(dListener);
+        pizzaComboBox.removeActionListener(pListener);
+
+        dispersaoComboBox.setSelectedIndex(0);
+        pizzaComboBox.setSelectedIndex(0);
+
+        dispersaoComboBox.addActionListener(dListener);
+        pizzaComboBox.addActionListener(pListener);
+
         int selectedIndex = barraComboBox.getSelectedIndex();
         String filename = "";
         switch (selectedIndex) {
@@ -149,4 +200,3 @@ public class EstatisticasPanel extends JPanel {
         }
     }
 }
-
