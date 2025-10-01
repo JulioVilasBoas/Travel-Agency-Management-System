@@ -19,7 +19,7 @@ public class ConsultasPanel extends JPanel {
 
         //painel dos botoes
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
-        query1Button = new JButton("Vendas por Funcionário (JOIN)");
+        query1Button = new JButton("Vendas por Funcionário");
         query2Button = new JButton("Pacotes Mais Caros");
         query3Button = new JButton("Reservas Pendentes");
         query4Button = new JButton("Serviços por Fornecedor");
