@@ -1,5 +1,6 @@
 package gui;
 
+import com.mysql.cj.protocol.x.XMessage;
 import database.DatabaseConnection;
 
 import javax.swing.*;
@@ -64,6 +65,17 @@ public class ClientePanel extends JPanel {
     }
 
     private void adicionarCliente() {
+        if (cpfField.getText().trim().isEmpty() ||
+                nomeField.getText().trim().isEmpty() ||
+                ruaField.getText().trim().isEmpty() ||
+                numeroField.getText().trim().isEmpty() ||
+                cidadeField.getText().trim().isEmpty()) {
+
+            JOptionPane.showMessageDialog(this, "Erro ao adicionar, preencha todos os campos.", "Erro de Validação", JOptionPane.ERROR_MESSAGE);
+
+            return;
+        }
+
         String sql = "INSERT INTO Cliente (cpf, nome, rua, numero, cidade) VALUES (?, ?, ?, ?, ?)";
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -85,6 +97,17 @@ public class ClientePanel extends JPanel {
     }
 
     private void atualizarCliente() {
+        if (cpfField.getText().trim().isEmpty() ||
+                nomeField.getText().trim().isEmpty() ||
+                ruaField.getText().trim().isEmpty() ||
+                numeroField.getText().trim().isEmpty() ||
+                cidadeField.getText().trim().isEmpty()) {
+
+            JOptionPane.showMessageDialog(this, "Erro ao adicionar, preencha todos os campos.", "Erro de Validação", JOptionPane.ERROR_MESSAGE);
+
+            return;
+        }
+
         String sql = "UPDATE Cliente SET nome = ?, rua = ?, numero = ?, cidade = ? WHERE cpf = ?";
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
