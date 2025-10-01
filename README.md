@@ -1,4 +1,5 @@
-&nbsp;Sistema de Gestão para Agência de Viagens - Horizonte Viagens
+Horizonte Viagens ✈️
+&nbsp;Sistema de Gestão para Agência de Viagens
 Sobre o Projeto:
 Trata-se de uma aplicação desktop completa pra a gestão de uma agência de viagens, desenvolvida como parte dos meus estudos em Banco de Dados. O projeto abrange todo o ciclo de vida de um sistema de informação, desde a modelagem conceitual até uma interface funcional.A aplicação permite o gerenciamento de clientes, funcionários, pacotes de viagem, reservas e pagamentos, além de fornecer um dashboard para a visualização de consultas e gráficos estatísticos.
 
