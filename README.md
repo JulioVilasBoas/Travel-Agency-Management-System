@@ -1,31 +1,35 @@
-✈️ Sistema de Gestão para Agência de Viagens - Horizonte Viagens
- Sobre o Projeto:
-Este projeto é uma solução acadêmica completa para a gestão de uma agência de viagens, desenvolvida para as disciplinas de Banco de Dados e Probabilidade e Estatística. O sistema abrange todo o ciclo de vida do desenvolvimento de um banco de dados, desde a modelagem conceitual até à criação de uma aplicação desktop funcional em Java para interagir com os dados.
+&nbsp;Sistema de Gestão para Agência de Viagens - Horizonte Viagens
+Sobre o Projeto:
+Trata-se de uma aplicação desktop completa pra a gestão de uma agência de viagens, desenvolvida como parte dos meus estudos em Banco de Dados. O projeto abrange todo o ciclo de vida de um sistema de informação, desde a modelagem conceitual até uma interface funcional.A aplicação permite o gerenciamento de clientes, funcionários, pacotes de viagem, reservas e pagamentos, além de fornecer um dashboard para a visualização de consultas e gráficos estatísticos.
 
-A aplicação permite o gerenciamento de clientes, funcionários, pacotes de viagem, reservas e pagamentos, além de fornecer um dashboard para a visualização de consultas e gráficos estatísticos.
+&nbsp;Funcionalidades Implementadas
+- Interface Gráfica Desktop (Java Swing): Uma aplicação completa e funcional com uma navegação intuitiva por abas, permitindo acesso rápido a todas as funcionalidades do sistema.
 
-✨ Funcionalidades Implementadas
-Modelagem de Dados Completa: Inclui minimundo, modelo conceitual (MER), modelo lógico e esquema relacional.
+\- Gerenciamento de Dados (CRUD): Módulos dedicados pra a gestão completa de tabelas, permitindo operações de Inserção, Busca por ID/CPF, atualização e deleção de registos através de formulários interativos.
 
-Banco de Dados MySQL: Script SQL completo para a criação de todas as tabelas, chaves e restrições.
+\- Análise de Negócio (Consultas SQL): Um painel pra a execução de consultas SQL, que traduzem dados brutos em informações de negócio valiosas.
 
-Interface Gráfica Desktop: Aplicação desenvolvida em Java Swing com uma interface de abas para facilitar a navegação entre as diferentes funcionalidades.
+\- Dashboard de Estatísticas: Integração de um dashboard visual pra a exibição de gráficos, apresentando de forma clara os insights gerados a partir da análise estatística dos dados.
 
-Dashboard de Estatísticas: Uma aba dedicada à visualização de gráficos gerados a partir de dados coletados para a disciplina de estatística.
+&nbsp;O que eu aprendi com este projeto?
 
-Conexão Pura com JDBC: Toda a comunicação entre a aplicação Java e o banco de dados MySQL é feita utilizando JDBC com comandos SQL explícitos, sem o uso de frameworks ORM, conforme os requisitos do projeto.
+\- Modelagem e Implementação de Dados de ponta a ponta (Desde a criação do Mini-Mundo até a criação física do BD);
 
-Módulos de Gestão (CRUD): Implementação das operações de Inserir, Atualizar, Deletar e Buscar para tabelas.
+\- Desenvolvimento de Aplicação Desktop em Java (Swing);
 
-Módulo de Consultas: Uma seção para a execução e visualização de consultas SQL para extrair informações de negócio relevantes.
+\- Integração Backend-Frontend com JDBC puro;
 
-🚀 Tecnologias Utilizadas
-Linguagem: Java
+\- Implementação de Regras de Negócio e Integridade de Dados
 
-Banco de Dados: MySQL
+&nbsp;Tecnologias Utilizadas
 
-Interface Gráfica (GUI): Java Swing
+Linguagem: Java;
 
-Conectividade com BD: JDBC (MySQL Connector/J)
+Banco de Dados: MySQL;
+
+Interface Gráfica (GUI): Java Swing;
+
+Conectividade com BD: JDBC (MySQL Connector/J);
 
 IDE: IntelliJ IDEA
+
