@@ -27,7 +27,7 @@ MUDANÇAS_BD - PROJETO.sql
 
 
 *.jar
-!/lib/mysql-connector-j-9.4.0.jar
+!/HorizonteViagens_Interface/lib/mysql-connector-j-9.4.0.jar
 *.war
 *.ear
 *.zip
