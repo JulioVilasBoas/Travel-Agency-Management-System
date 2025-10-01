@@ -1,0 +1,41 @@
+Funcionario(id_func(PK), nome, cargo, data_admissao, supervisor(FK))
+supervisor referencia Funcionario
+
+Pagamento(num_parcela(PK), id_reserva(PK e FK), data_vencimento, data_pagamento, status_parcela, meio_pagamento)
+id_reserva referencia Reserva
+
+Reserva(id_reserva(PK), valor_total_reserva, data_venda, status_pagamento, id_func(FK), id_pacote(FK), cliente_cpf(FK))
+id_func referencia Funcionario
+id_pacote referencia Pacote_viagem
+cliente_cpf referencia Cliente(cpf)
+
+Cliente(cpf(PK), numero, rua, cidade, nome)
+
+Cliente_telefone(cliente_cpf(PK e FK), numero(PK))
+cliente_cpf referencia Cliente(cpf)
+
+Dependente(cliente_cpf(PK e FK), nome(PK), parentesco, data_nascimento)
+cliente_cpf referencia Cliente(cpf)
+
+Pacote_viagem(id_pacote(PK), nome_pacote, preco_total, data_inicio, data_final, id_destino(FK))
+id_destino referencia Destino
+
+Composicao_Pacote(id_servico(PK e FK), id_pacote(PK e FK), desc_servico_pacote)
+id_servico referencia Servico
+id_pacote referencia Pacote_viagem
+
+Destino(id_Destino(PK), pais, cidade)
+
+Servico(id_servico(PK), tipo_servico, descricao, fornecedor_cnpj(FK))
+fornecedor_cnpj referencia Fornecedor(cnpj)
+
+Fornecedor(cnpj(PK), telefone, e-mail, nome_fantasia)
+
+CompanhiaAerea(cnpj(PK e FK), codigo_IATA, politicas_bagagem)
+cnpj referencia Fornecedor
+
+RedeHoteleira(cnpj(PK e FK), categoria, politica_cancelamento)
+cnpj referencia Fornecedor
+
+OperadoraTurismo(cnpj(PK e FK), Registro_operadora, escopo)
+cnpj referencia Fornecedor
