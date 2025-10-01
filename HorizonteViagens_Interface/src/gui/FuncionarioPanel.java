@@ -65,6 +65,14 @@ public class FuncionarioPanel extends JPanel {
     }
 
     private void adicionarFuncionario() {
+        if (nomeField.getText().trim().isEmpty() ||
+                cargoField.getText().trim().isEmpty() ||
+                dataAdmissaoField.getText().trim().isEmpty()) {
+
+            JOptionPane.showMessageDialog(this, "Erro ao adicionar, preencha todos os campos obrigatorios! (Nome, Cargo e Data de Admissao", "Erro de Validação", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
         String sql = "INSERT INTO Funcionario (nome, cargo, data_admissao, supervisor) VALUES (?, ?, ?, ?)";
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -90,6 +98,14 @@ public class FuncionarioPanel extends JPanel {
     }
 
     private void atualizarFuncionario() {
+        if (nomeField.getText().trim().isEmpty() ||
+                cargoField.getText().trim().isEmpty() ||
+                dataAdmissaoField.getText().trim().isEmpty()) {
+
+            JOptionPane.showMessageDialog(this, "Erro ao adicionar, preencha todos os campos obrigatorios! (Nome, Cargo e Data de Admissao", "Erro de Validação", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
         String sql = "UPDATE Funcionario SET nome = ?, cargo = ?, data_admissao = ?, supervisor = ? WHERE id_func = ?";
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
