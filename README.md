@@ -31,6 +31,8 @@ Banco de Dados: MySQL;
 
 Interface Gráfica (GUI): Java Swing;
 
+ Modelo conceitual/Modelo lógico: brModelo
+
 Conectividade com BD: JDBC (MySQL Connector/J);
 
 IDE: IntelliJ IDEA
