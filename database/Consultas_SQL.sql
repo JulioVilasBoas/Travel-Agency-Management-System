@@ -23,4 +23,35 @@ SELECT fo.nome_fantasia, COUNT(s.id_servico) AS quantidade_servicos
 FROM Fornecedor fo JOIN Servico s ON fo.cnpj = s.fornecedor_cnpj
 GROUP BY fo.nome_fantasia;
 -- SINTAXE JAVA: "SELECT fo.nome_fantasia, COUNT(s.id_servico) as quantidade_servicos FROM Fornecedor fo JOIN Servico s ON fo.cnpj = s.fornecedor_cnpj GROUP BY fo.nome_fantasia;"
- 
+
+-- NOVAS 4 CONSULTAS:
+-- anti-join
+SELECT c.nome, c.cpf
+FROM Cliente c
+LEFT JOIN Reserva r ON c.cpf = r.cliente_cpf
+WHERE r.id_reserva IS NULL;
+
+-- full outer join
+SELECT fo.nome_fantasia, s.descricao AS nome_servico
+FROM Fornecedor fo
+LEFT JOIN Servico s ON fo.cnpj = s.fornecedor_cnpj
+
+UNION
+
+SELECT fo.nome_fantasia, s.descricao AS nome_servico
+FROM Fornecedor fo
+RIGHT JOIN Servico s ON fo.cnpj = s.fornecedor_cnpj;
+
+-- sub consulta 1
+SELECT id_reserva, cliente_cpf, valor_total_reserva
+FROM Reserva
+WHERE valor_total_reserva > (SELECT AVG(valor_total_reserva) FROM Reserva);
+
+-- sub consulta 2
+SELECT nome
+FROM Funcionario
+WHERE id_func IN (
+    SELECT id_func
+    FROM Reserva
+    GROUP BY id_func
+    HAVING COUNT(id_reserva) >= 3);
