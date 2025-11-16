@@ -1,4 +1,4 @@
-CREATE TABLE Cliente (
+CREATE TABLE Cliente(
     cpf CHAR(11) PRIMARY KEY,
     cidade VARCHAR(80) NOT NULL,
     nome VARCHAR(120) NOT NULL,
@@ -196,4 +196,44 @@ CREATE TABLE Reserva_Dependente (
         REFERENCES Dependente(cliente_cpf, nome)
         ON UPDATE CASCADE
         ON DELETE CASCADE
+);
+
+CREATE TABLE Pesquisa_Perfil_Cliente (
+    id_pesquisa INT PRIMARY KEY AUTO_INCREMENT,
+    cliente_cpf CHAR(11),
+
+    -- 1. Tipo de destino
+    tipo_destino VARCHAR(40) NOT NULL,
+
+    -- 2. Objetivo da viagem
+    objetivo_viagem VARCHAR(40) NOT NULL,
+
+    -- 3. Companhia de viagem
+    companhia_viagem VARCHAR(40) NOT NULL,
+
+    -- 4. Duração média
+    duracao_media VARCHAR(40) NOT NULL,
+
+    -- 5. Renda familiar
+    renda_familiar VARCHAR(50) NOT NULL,
+
+    -- 6. Orçamento por pessoa (pode faltar em algumas respostas)
+    orcamento_pessoa VARCHAR(50) NULL,
+
+    -- 7. Faixa etária
+    faixa_etaria VARCHAR(40) NOT NULL,
+
+    -- 8. Gênero (tem uma resposta vazia)
+    genero VARCHAR(20) NULL,
+
+    -- 9. Tipo de hospedagem
+    tipo_hospedagem VARCHAR(40) NOT NULL,
+
+    -- 10. Critério principal
+    criterio_pacote VARCHAR(80) NOT NULL,
+
+    CONSTRAINT fk_PesqPerfil_Cliente FOREIGN KEY (cliente_cpf)
+        REFERENCES Cliente(cpf)
+        ON UPDATE CASCADE
+        ON DELETE SET NULL
 );
