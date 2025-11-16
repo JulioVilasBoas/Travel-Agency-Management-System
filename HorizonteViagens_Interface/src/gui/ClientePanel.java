@@ -11,8 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class ClientePanel extends JPanel {
-
-    private JTextField cpfField, nomeField, ruaField, numeroField, cidadeField;
+    private JTextField cpfField, nomeField, ruaField, numeroField, cidadeField, categoriaField;
     private JButton addButton, updateButton, deleteButton, findButton;
 
     public ClientePanel() {
@@ -41,6 +40,10 @@ public class ClientePanel extends JPanel {
         formPanel.add(new JLabel("Cidade:"));
         cidadeField = new JTextField();
         formPanel.add(cidadeField);
+        formPanel.add(new JLabel("Categoria (via Função):"));
+        categoriaField = new JTextField();
+        categoriaField.setEditable(false);
+        formPanel.add(categoriaField);
 
         //painel dos botoes
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
@@ -153,7 +156,8 @@ public class ClientePanel extends JPanel {
     }
 
     private void buscarCliente() {
-        String sql = "SELECT nome, rua, numero, cidade FROM Cliente WHERE cpf = ?";
+        String sql = "SELECT nome, rua, numero, cidade, FN_Categoria_Cliente(cpf) AS categoria FROM Cliente WHERE cpf = ?";
+
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
@@ -165,6 +169,8 @@ public class ClientePanel extends JPanel {
                 ruaField.setText(rs.getString("rua"));
                 numeroField.setText(rs.getString("numero"));
                 cidadeField.setText(rs.getString("cidade"));
+                categoriaField.setText(rs.getString("categoria"));
+
             } else {
                 JOptionPane.showMessageDialog(this, "Nenhum cliente encontrado com o CPF informado.", "Aviso", JOptionPane.WARNING_MESSAGE);
                 limparCamposParcialmente();
@@ -184,5 +190,7 @@ public class ClientePanel extends JPanel {
         ruaField.setText("");
         numeroField.setText("");
         cidadeField.setText("");
+        categoriaField.setText("");
+
     }
 }
