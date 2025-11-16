@@ -16,7 +16,7 @@ public class MainScreen extends JFrame {
 
         //aba de consultas
         ConsultasPanel consultasPanel = new ConsultasPanel();
-        tabbedPane.addTab("Consultas", consultasPanel);
+        tabbedPane.addTab("Consultas/Views/Trigger", consultasPanel);
 
         //aba de clientes
         ClientePanel clientePanel = new ClientePanel();
@@ -33,6 +33,10 @@ public class MainScreen extends JFrame {
         //aba de fornecedores
         FornecedorPanel fornecedorPanel = new FornecedorPanel();
         tabbedPane.addTab("Gerenciar Fornecedores", fornecedorPanel);
+
+        //aba de ferramentas (procedimentos)
+        FerramentasPanel ferramentasPanel = new FerramentasPanel();
+        tabbedPane.addTab("Ferramentas (procedures)", ferramentasPanel);
 
         //aba de estatisticas
         EstatisticasPanel estatisticasPanel = new EstatisticasPanel();
