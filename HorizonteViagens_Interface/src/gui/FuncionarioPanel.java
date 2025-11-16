@@ -10,8 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class FuncionarioPanel extends JPanel {
-
-    private JTextField idField, nomeField, cargoField, dataAdmissaoField, supervisorField;
+    private JTextField idField, nomeField, cargoField, dataAdmissaoField, supervisorField, totalVendasField;
     private JButton addButton, updateButton, deleteButton, findButton;
 
     public FuncionarioPanel() {
@@ -41,6 +40,10 @@ public class FuncionarioPanel extends JPanel {
         formPanel.add(new JLabel("ID do Supervisor (se tiver):"));
         supervisorField = new JTextField();
         formPanel.add(supervisorField);
+        formPanel.add(new JLabel("Total de Vendas (via Função):"));
+        totalVendasField = new JTextField();
+        totalVendasField.setEditable(false);
+        formPanel.add(totalVendasField);
 
         //painel dos botões
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
@@ -162,7 +165,9 @@ public class FuncionarioPanel extends JPanel {
     private void buscarFuncionario() {
         String idParaBuscar = JOptionPane.showInputDialog(this, "Digite o ID do funcionário a ser buscado:");
         if (idParaBuscar != null && !idParaBuscar.trim().isEmpty()) {
-            String sql = "SELECT nome, cargo, data_admissao, supervisor FROM Funcionario WHERE id_func = ?";
+            String sql = "SELECT nome, cargo, data_admissao, supervisor, FN_Total_Vendas_Funcionario(id_func) AS total_vendas " +
+                    "FROM Funcionario WHERE id_func = ?";
+
             try (Connection conn = DatabaseConnection.getConnection();
                  PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
@@ -181,6 +186,8 @@ public class FuncionarioPanel extends JPanel {
                     } else {
                         supervisorField.setText(String.valueOf(supervisorId));
                     }
+                    totalVendasField.setText(String.valueOf(rs.getInt("total_vendas")));
+
                 } else {
                     JOptionPane.showMessageDialog(this, "Nenhum funcionário encontrado com o ID informado.", "Aviso", JOptionPane.WARNING_MESSAGE);
                     limparCampos();
@@ -197,5 +204,6 @@ public class FuncionarioPanel extends JPanel {
         cargoField.setText("");
         dataAdmissaoField.setText("");
         supervisorField.setText("");
+        totalVendasField.setText("");
     }
 }
