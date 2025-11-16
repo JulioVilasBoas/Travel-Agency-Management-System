@@ -26,6 +26,14 @@ public class MainScreen extends JFrame {
         FuncionarioPanel funcionarioPanel = new FuncionarioPanel();
         tabbedPane.addTab("Gerenciar funcionários", funcionarioPanel);
 
+        //aba de destinos
+        DestinoPanel destinoPanel = new DestinoPanel();
+        tabbedPane.addTab("Gerenciar Destinos", destinoPanel);
+
+        //aba de fornecedores
+        FornecedorPanel fornecedorPanel = new FornecedorPanel();
+        tabbedPane.addTab("Gerenciar Fornecedores", fornecedorPanel);
+
         //aba de estatisticas
         EstatisticasPanel estatisticasPanel = new EstatisticasPanel();
         tabbedPane.addTab("Estatística (graficos)", estatisticasPanel);
